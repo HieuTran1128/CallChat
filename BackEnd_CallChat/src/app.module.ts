@@ -10,12 +10,18 @@ import databaseConfig from './config/database.config';
 import jwtConfig from './config/jwt.config';
 import { validateEnvironment } from './config/env.validation';
 import { AdminModule } from './admin/admin.module';
+import cloudinaryConfig from './config/cloudinary.config';
+import { ContactsModule } from './contacts/contacts.module';
+import { SocketModule } from './socket/socket.module';
+import { ConversationsModule } from './conversations/conversations.module';
+import { MessagesModule } from './messages/messages.module';
+import { CallsModule } from './calls/calls.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig, databaseConfig, jwtConfig],
+      load: [appConfig, databaseConfig, jwtConfig, cloudinaryConfig],
       validate: validateEnvironment,
     }),
 
@@ -29,6 +35,11 @@ import { AdminModule } from './admin/admin.module';
     UsersModule,
     AuthModule,
     AdminModule,
+    ContactsModule,
+    SocketModule,
+    ConversationsModule,
+    MessagesModule,
+    CallsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -40,6 +40,9 @@ export class User {
   @Prop()
   avatarUrl?: string;
 
+  @Prop({ select: false })
+  avatarPublicId?: string;
+
   @Prop({
     enum: ['ONLINE', 'OFFLINE', 'BUSY'],
     default: 'OFFLINE',
