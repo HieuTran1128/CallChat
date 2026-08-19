@@ -1,0 +1,13 @@
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { CallPage } from '../pages/CallPage'
+import { ChatPage } from '../pages/ChatPage'
+import { LoginPage } from '../pages/LoginPage'
+import { ProfilePage } from '../pages/ProfilePage'
+import { RegisterPage } from '../pages/RegisterPage'
+import { ROUTES } from '../shared/constants/routes'
+import { AuthLayout } from '../shared/layouts/AuthLayout'
+import { MainLayout } from '../shared/layouts/MainLayout'
+import { ProtectedRoute } from './ProtectedRoute'
+import { AdminRoute } from './AdminRoute'
+import { AdminDashboardPage } from '../pages/admin/AdminDashboardPage'
+export function AppRouter() { return <Routes><Route element={<AuthLayout />}><Route path={ROUTES.login} element={<LoginPage />} /><Route path={ROUTES.register} element={<RegisterPage />} /></Route><Route element={<ProtectedRoute />}><Route element={<MainLayout />}><Route path={ROUTES.chat} element={<ChatPage />} /><Route path={ROUTES.profile} element={<ProfilePage />} /><Route path={ROUTES.call} element={<CallPage />} /><Route element={<AdminRoute />}><Route path={ROUTES.admin} element={<AdminDashboardPage />} /></Route></Route></Route><Route path="*" element={<Navigate to={ROUTES.chat} replace />} /></Routes> }
